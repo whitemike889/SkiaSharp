@@ -15,7 +15,7 @@ variables:
   MANAGED_LINUX_PACKAGES: mono-complete msbuild ttf-ancient-fonts
   MONO_VERSION_MACOS: 6_4_0
   MONO_VERSION_LINUX: stable-xenial/snapshots/6.4.0
-  XCODE_VERSION: 11.1
+  XCODE_VERSION: 11
   DOTNET_VERSION: 3.0.x
   CONFIGURATION: 'Release'
   VM_IMAGE_WINDOWS: Hosted Windows 2019 with VS2019
