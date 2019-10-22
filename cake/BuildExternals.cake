@@ -74,7 +74,7 @@ Task ("externals-init")
     .Does (() =>
 {
     RunProcess (PythonToolPath, new ProcessSettings {
-        Arguments = SKIA_PATH.CombineWithFilePath ("tools/git-sync-deps").FullPath,
+        Arguments = SKIA_PATH.CombineWithFilePath ("tools/git-sync-deps").FullPath + " -v",
         WorkingDirectory = SKIA_PATH.FullPath,
     });
 });
