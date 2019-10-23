@@ -101,6 +101,10 @@ jobs:
           displayName: Move the ${{ dep }} artifacts to the output directory
       # pre-build steps
       - ${{ parameters.preBuildSteps }}
+      - pwsh: |
+          python --version
+          cd externals/skia
+          python tools/git-sync-deps -v -d
       # build
       - ${{ if endsWith(parameters.name, '_windows') }}:
         - powershell: .\scripts\retry-command.ps1 -RetryCount ${{ parameters.retryCount }} { .\bootstrapper.ps1 -t ${{ parameters.target }} -v ${{ parameters.verbosity }} -c ${{ coalesce(parameters.configuration, 'Release') }} ${{ parameters.additionalArgs }} }
