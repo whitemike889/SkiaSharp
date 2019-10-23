@@ -43,7 +43,9 @@ jobs:
           $path = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview"
 
           $exitCode = Start-Process -FilePath "$installer" -ArgumentList "--update --quiet --wait" -Wait -PassThru
+          echo "EXIT: $exitCode"
           $exitCode = Start-Process -FilePath "$installer" -ArgumentList "modify --installPath `"$path`" --add Microsoft.VisualStudio.Component.VC.v141.x86.x64 --wait --passive --norestart" -Wait -PassThru
+          echo "EXIT: $exitCode"
       - pwsh: |
           dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\"
       - pwsh: |
