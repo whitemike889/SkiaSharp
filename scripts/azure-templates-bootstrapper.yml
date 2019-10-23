@@ -39,7 +39,7 @@ jobs:
       - checkout: self
         submodules: recursive
       - pwsh: |
-          dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\"
+          dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\"
       - pwsh: |
           if ($env:GIT_BRANCH_NAME.StartsWith($env:FEATURE_NAME_PREFIX)) {
             $feature = $env:GIT_BRANCH_NAME.Substring($env:FEATURE_NAME_PREFIX.Length)
