@@ -26,7 +26,7 @@ jobs:
     timeoutInMinutes: 120
     pool:
       name: ${{ parameters.vmImage }}
-    container: ubuntu:16.04
+    container: ubuntu:14.04
     steps:
       - checkout: self
         submodules: recursive
@@ -34,6 +34,7 @@ jobs:
       - bash: |
           sudo apt update
           sudo apt install -y apt-transport-https
+          sudo apt-add-repository "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-8 main"
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
           echo "deb https://download.mono-project.com/repo/ubuntu stable-trusty main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
           sudo apt update
@@ -45,8 +46,8 @@ jobs:
       - bash: ./scripts/retry-command.sh ${{ parameters.retryCount }} ./bootstrapper.sh -t ${{ parameters.target }} -v ${{ parameters.verbosity }} -c ${{ coalesce(parameters.configuration, 'Release') }} ${{ parameters.additionalArgs }}
         displayName: Run the bootstrapper for ${{ parameters.target }}
         env:
-          CC: clang-4.0
-          CXX: clang++-4.0
+          CC: clang-8
+          CXX: clang++-8
       - bash: |
           find output/native/linux -type f -name "*.so" -print0 | xargs -0 ldd -v
         displayName: List the dependencies for the native binaries
