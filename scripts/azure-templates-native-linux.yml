@@ -32,8 +32,7 @@ jobs:
         submodules: recursive
       # install any packages
       - bash: |
-          apt update
-          apt install -y curl
+          apt install -y sudo
           # apt install -y apt-transport-https curl wget
           # apt update
           # curl -L https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
