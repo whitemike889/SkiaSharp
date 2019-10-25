@@ -26,7 +26,9 @@ jobs:
     timeoutInMinutes: 120
     pool:
       name: ${{ parameters.vmImage }}
-    container: ubuntu:16.04
+    container: 
+      image: ubuntu:16.04
+      options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so -v /etc/sudoers:/etc/sudoers'
     steps:
       - checkout: self
         submodules: recursive
