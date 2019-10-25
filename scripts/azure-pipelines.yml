@@ -10,7 +10,6 @@ variables:
   BUILD_NUMBER: $[counter(variables['Build.SourceBranch'], 150)]
   FEATURE_NAME: ''
   PREVIEW_LABEL: 'rc'
-  NATIVE_LINUX_PACKAGES: mono-complete msbuild python git libfontconfig1-dev clang-10 make
   TIZEN_LINUX_PACKAGES: mono-complete msbuild libxcb-xfixes0 libxcb-render-util0 libwebkitgtk-1.0-0 libxcb-image0 acl libsdl1.2debian libv4l-0 libxcb-randr0 libxcb-shape0 libxcb-icccm4 libsm6 gettext rpm2cpio cpio bridge-utils openvpn
   MANAGED_LINUX_PACKAGES: mono-complete msbuild ttf-ancient-fonts
   MONO_VERSION_MACOS: 6_4_0
@@ -107,14 +106,12 @@ stages:
           name: native_linux_linux
           displayName: Build Native Linux (Linux)
           vmImage: $(VM_IMAGE_LINUX)
-          packages: $(NATIVE_LINUX_PACKAGES)
           target: externals-linux
       - template: azure-templates-native-linux.yml # Build Native Linux [No Dependencies] (Linux)
         parameters:
           name: native_linux_nodependencies_linux
           displayName: Build Native Linux [No Dependencies] (Linux)
           vmImage: $(VM_IMAGE_LINUX)
-          packages: $(NATIVE_LINUX_PACKAGES)
           target: externals-linux
           additionalArgs: --additionalGnArgs="skia_use_fontconfig=false"
       - template: azure-templates-bootstrapper.yml # Build Native Tizen (Linux)
