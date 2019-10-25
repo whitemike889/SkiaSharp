@@ -26,20 +26,21 @@ jobs:
     timeoutInMinutes: 120
     pool:
       name: ${{ parameters.vmImage }}
-    container: ubuntu:14.04
+    container: ubuntu:16.04
     steps:
       - checkout: self
         submodules: recursive
       # install any packages
       - bash: |
-          sudo apt-get update
-          sudo apt-get install -y apt-transport-https
-          sudo apt-add-repository "deb https://apt.llvm.org/trusty llvm-toolchain-trusty-8 main"
-          sudo apt-get update
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-          echo "deb https://download.mono-project.com/repo/ubuntu stable-trusty main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-          sudo apt-get update
-          sudo apt-get install -y ${{ parameters.packages }}
+          apt-get update
+          apt-get install -y apt-transport-https curl wget
+          apt-get update
+          curl -L https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+          echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" | tee /etc/apt/sources.list.d/llvm.list
+          apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+          echo "deb https://download.mono-project.com/repo/ubuntu stable-trusty main" | tee /etc/apt/sources.list.d/mono-official-stable.list
+          apt-get update
+          apt-get install -y ${{ parameters.packages }}
         displayName: Install any package dependencies
       # pre-build steps
       - ${{ parameters.preBuildSteps }}
@@ -47,8 +48,8 @@ jobs:
       - bash: ./scripts/retry-command.sh ${{ parameters.retryCount }} ./bootstrapper.sh -t ${{ parameters.target }} -v ${{ parameters.verbosity }} -c ${{ coalesce(parameters.configuration, 'Release') }} ${{ parameters.additionalArgs }}
         displayName: Run the bootstrapper for ${{ parameters.target }}
         env:
-          CC: clang-8
-          CXX: clang++-8
+          CC: clang-10
+          CXX: clang++-10
       - bash: |
           find output/native/linux -type f -name "*.so" -print0 | xargs -0 ldd -v
         displayName: List the dependencies for the native binaries

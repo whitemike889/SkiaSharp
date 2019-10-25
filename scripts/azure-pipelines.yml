@@ -10,7 +10,7 @@ variables:
   BUILD_NUMBER: $[counter(variables['Build.SourceBranch'], 150)]
   FEATURE_NAME: ''
   PREVIEW_LABEL: 'rc'
-  NATIVE_LINUX_PACKAGES: curl mono-complete msbuild python git libfontconfig1-dev clang-8 make
+  NATIVE_LINUX_PACKAGES: mono-complete msbuild python git libfontconfig1-dev clang-10 make
   TIZEN_LINUX_PACKAGES: mono-complete msbuild libxcb-xfixes0 libxcb-render-util0 libwebkitgtk-1.0-0 libxcb-image0 acl libsdl1.2debian libv4l-0 libxcb-randr0 libxcb-shape0 libxcb-icccm4 libsm6 gettext rpm2cpio cpio bridge-utils openvpn
   MANAGED_LINUX_PACKAGES: mono-complete msbuild ttf-ancient-fonts
   MONO_VERSION_MACOS: 6_4_0
