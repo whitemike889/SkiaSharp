@@ -28,25 +28,25 @@ jobs:
       name: ${{ parameters.vmImage }}
     container: 
       image: ubuntu:16.04
-      options: '-v /usr/bin/sudo:/usr/bin/sudo -v /usr/lib/sudo/libsudo_util.so.0:/usr/lib/sudo/libsudo_util.so.0 -v /usr/lib/sudo/sudoers.so:/usr/lib/sudo/sudoers.so -v /etc/sudoers:/etc/sudoers'
+      options: -u root
     steps:
       - checkout: self
         submodules: recursive
       # install any packages
       - bash: |
           # prepare
-          sudo apt update
-          sudo apt install -y apt-transport-https curl wget
-          sudo apt update
+          apt update
+          apt install -y apt-transport-https curl wget
+          apt update
           # add keys
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-          curl -L https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+          apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+          curl -L https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
           # add sources
-          echo "deb https://download.mono-project.com/repo/ubuntu stable-trusty main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-          echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" | sudo tee /etc/apt/sources.list.d/llvm.list
-          sudo apt update
+          echo "deb https://download.mono-project.com/repo/ubuntu stable-trusty main" | tee /etc/apt/sources.list.d/mono-official-stable.list
+          echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" | tee /etc/apt/sources.list.d/llvm.list
+          apt update
           # install
-          sudo apt install -y ${{ parameters.packages }}
+          apt install -y ${{ parameters.packages }}
         displayName: Install any package dependencies
       # pre-build steps
       - ${{ parameters.preBuildSteps }}
