@@ -39,16 +39,6 @@ jobs:
       - checkout: self
         submodules: recursive
       - pwsh: |
-          $installer = "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe"
-          $path = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise"
-
-          $packages = "--add Microsoft.VisualStudio.Component.VC.v141.x86.x64"
-
-          $exitCode = Start-Process -FilePath "$installer" -ArgumentList "modify --installPath `"$path`" $packages --quiet --norestart" -Wait -PassThru
-          echo "EXIT: $($exitCode.ExitCode)"
-      - pwsh: |
-          dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\"
-      - pwsh: |
           if ($env:GIT_BRANCH_NAME.StartsWith($env:FEATURE_NAME_PREFIX)) {
             $feature = $env:GIT_BRANCH_NAME.Substring($env:FEATURE_NAME_PREFIX.Length)
             Write-Host "##vso[task.setvariable variable=FEATURE_NAME]$feature"
@@ -117,6 +107,8 @@ jobs:
           python tools/git-sync-deps -v -d
       # build
       - ${{ if endsWith(parameters.name, '_windows') }}:
+        - pwsh: .\scripts\install-vs.ps1
+          displayName: Install the Visual Studio dependencies
         - pwsh: .\scripts\retry-command.ps1 -RetryCount ${{ parameters.retryCount }} { .\bootstrapper.ps1 -t ${{ parameters.target }} -v ${{ parameters.verbosity }} -c ${{ coalesce(parameters.configuration, 'Release') }} ${{ parameters.additionalArgs }} }
           env:
             JavaSdkDirectory: $(JAVA_HOME)
