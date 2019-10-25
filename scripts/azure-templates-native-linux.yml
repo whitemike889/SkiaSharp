@@ -26,7 +26,7 @@ jobs:
     timeoutInMinutes: 120
     pool:
       name: ${{ parameters.vmImage }}
-    container: ubuntu:14.04
+    container: ubuntu:16.04
     steps:
       - checkout: self
         submodules: recursive
@@ -45,8 +45,8 @@ jobs:
       - bash: ./scripts/retry-command.sh ${{ parameters.retryCount }} ./bootstrapper.sh -t ${{ parameters.target }} -v ${{ parameters.verbosity }} -c ${{ coalesce(parameters.configuration, 'Release') }} ${{ parameters.additionalArgs }}
         displayName: Run the bootstrapper for ${{ parameters.target }}
         env:
-          CC: clang-3.8
-          CXX: clang++-3.8
+          CC: clang-4.0
+          CXX: clang++-4.0
       - bash: |
           find output/native/linux -type f -name "*.so" -print0 | xargs -0 ldd -v
         displayName: List the dependencies for the native binaries
