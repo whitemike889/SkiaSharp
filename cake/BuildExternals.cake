@@ -146,7 +146,7 @@ Task ("externals-uwp")
             $"is_official_build=true skia_enable_tools=false " +
             $"target_os='winrt' target_cpu='{skiaArch}' " +
             COMMON_GN_ARGS +
-            $"skia_use_system_zlib=false " +
+            $"skia_use_system_zlib=false skia_enable_fontmgr_win_gdi=false " +
             $"extra_cflags=[  " +
             $"  '-DSKIA_C_DLL', '/MD', '/EHsc', '/Z7', " +
             $"  '-DWINAPI_FAMILY=WINAPI_FAMILY_APP', '-DSK_BUILD_FOR_WINRT', '-DSK_HAS_DWRITE_1_H', '-DSK_HAS_DWRITE_2_H', '-DNO_GETENV' ] " +
