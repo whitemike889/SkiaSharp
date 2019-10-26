@@ -70,11 +70,10 @@ void RunLipo (DirectoryPath directory, FilePath output, FilePath[] inputs)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Task ("externals-init")
-    .IsDependentOn ("externals-angle-uwp")
     .Does (() =>
 {
     RunProcess (PythonToolPath, new ProcessSettings {
-        Arguments = SKIA_PATH.CombineWithFilePath ("tools/git-sync-deps").FullPath + " -v -d",
+        Arguments = SKIA_PATH.CombineWithFilePath ("tools/git-sync-deps").FullPath,
         WorkingDirectory = SKIA_PATH.FullPath,
     });
 });
@@ -133,6 +132,7 @@ Task ("externals-windows")
 // this builds the native C and C++ externals for Windows UWP
 Task ("externals-uwp")
     .IsDependentOn ("externals-init")
+    .IsDependentOn ("externals-angle-uwp")
     .IsDependeeOf (ShouldBuildExternal ("uwp") ? "externals-native" : "externals-native-skip")
     .WithCriteria (ShouldBuildExternal ("uwp"))
     .WithCriteria (IsRunningOnWindows ())
