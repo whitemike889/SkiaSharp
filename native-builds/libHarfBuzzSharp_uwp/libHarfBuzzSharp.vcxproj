@@ -26,10 +26,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-   <ItemGroup>
+  <ItemGroup>
     <ClInclude Include="config.h" />
   </ItemGroup>
-   <ItemGroup>
+  <ItemGroup>
     <!--HB_BASE_sources-->
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-aat-fdsc-table.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-aat-layout-ankr-table.hh" />
@@ -119,9 +119,9 @@
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-math-table.hh" />
     <ClCompile Include="..\..\externals\harfbuzz\src\hb-ot-math.cc" />
     <ClCompile Include="..\..\externals\harfbuzz\src\hb-ot-meta.cc" />
-    <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-meta-table.hh" />	
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-meta-table.hh" />
     <ClCompile Include="..\..\externals\harfbuzz\src\hb-ot-metrics.cc" />
-    <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-metrics.hh" />	
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-metrics.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-maxp-table.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-name-language-static.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-name-language.hh" />
@@ -167,10 +167,10 @@
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-var-hvar-table.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-var-mvar-table.hh" />
     <ClCompile Include="..\..\externals\harfbuzz\src\hb-ot-var.cc" />
-    <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-vorg-table.hh" />	
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-vorg-table.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-pool.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-sanitize.hh" />
-    <ClInclude Include="..\..\externals\harfbuzz\src\hb-serialize.hh" />	
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-serialize.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-set-digest.hh" />
     <ClCompile Include="..\..\externals\harfbuzz\src\hb-set.cc" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-set.hh" />
@@ -226,7 +226,7 @@
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-shape.h" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-unicode.h" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-version.h" />
-    <ClInclude Include="..\..\externals\harfbuzz\src\hb.h" />  
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25b54d3d-b0f8-4e7e-8928-ffaf116fcce9}</ProjectGuid>
