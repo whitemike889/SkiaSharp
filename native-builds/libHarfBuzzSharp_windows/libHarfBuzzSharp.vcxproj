@@ -187,7 +187,7 @@
     <!--HB_BASE_RAGEL_GENERATED_sources-->
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-buffer-deserialize-json.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-buffer-deserialize-text.hh" />
-    <ClInclude Include="..\..\externals\harfbuzz\src\hb-number-parser.hh.hh" />
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-number-parser.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-shape-complex-indic-machine.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-shape-complex-khmer-machine.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-shape-complex-myanmar-machine.hh" />
