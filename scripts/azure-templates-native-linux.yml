@@ -35,6 +35,8 @@ jobs:
       # pre-build steps
       - ${{ parameters.preBuildSteps }}
       # build
+      - bash: docker run --name skiasharp --volume $(pwd):/work skiasharp ls -l
+        displayName: Run the bootstrapper for ${{ parameters.target }} using the Docker image
       - bash: docker run --name skiasharp --volume $(pwd):/work skiasharp ./scripts/retry-command.sh ${{ parameters.retryCount }} ./bootstrapper.sh -t ${{ parameters.target }} -v ${{ parameters.verbosity }} -c ${{ coalesce(parameters.configuration, 'Release') }} ${{ parameters.additionalArgs }}
         displayName: Run the bootstrapper for ${{ parameters.target }} using the Docker image
       # check the build output
