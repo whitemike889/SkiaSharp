@@ -69,6 +69,8 @@
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-meta.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-mutex.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-null.hh" />
+    <ClCompile Include="..\..\externals\harfbuzz\src\hb-number.cc" />
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-number.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-object.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-open-file.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-open-type.hh" />
@@ -185,6 +187,7 @@
     <!--HB_BASE_RAGEL_GENERATED_sources-->
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-buffer-deserialize-json.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-buffer-deserialize-text.hh" />
+    <ClInclude Include="..\..\externals\harfbuzz\src\hb-number-parser.hh.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-shape-complex-indic-machine.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-shape-complex-khmer-machine.hh" />
     <ClInclude Include="..\..\externals\harfbuzz\src\hb-ot-shape-complex-myanmar-machine.hh" />
