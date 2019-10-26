@@ -542,8 +542,7 @@ Task ("externals-android")
             COMMON_GN_ARGS +
             $"skia_use_system_freetype2=false skia_use_system_zlib=false " +
             $"extra_cflags=[ '-DSKIA_C_DLL' ] " +
-            $"ndk='{ANDROID_NDK_HOME}' " +
-            $"ndk_api={(skiaArch == "x64" || skiaArch == "arm64" ? 21 : 9)}");
+            $"ndk='{ANDROID_NDK_HOME}' ");
 
         var outDir = $"output/native/android/{arch}";
         EnsureDirectoryExists (outDir);
